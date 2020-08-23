@@ -16,5 +16,13 @@ const myObject = {
 const myContext = { value: 'A' };
 
 // myContect jako pierwszy parametr jest thisem
-myFunction.call(myContext);  // logs { value: 'A' }
-myFunction.apply(myContext); // logs { value: 'A' }
+//myFunction.call(myContext);  // logs { value: 'A' }
+//myFunction.apply(myContext); // logs { value: 'A' }
+
+function MyFunction() {
+    this.name = 'Jakub'
+    console.log(this);
+}
+
+// Konstruktor, loguje instrancję MyFunction
+new MyFunction();
