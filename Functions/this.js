@@ -1,3 +1,5 @@
+// NORMAL FUNCTIONS
+
 // This to globlany obiekt czyli window
 function myFunction() {
     console.log(this);
@@ -25,4 +27,19 @@ function MyFunction() {
 }
 
 // Konstruktor, loguje instrancję MyFunction
-new MyFunction();
+//new MyFunction();
+
+// ARROW FUNCTIONS
+
+const myObject1 = {
+    myMethod1(items) {
+        console.log(this);
+        const callback = () => {
+            console.log(this);
+        };
+        items.forEach(callback);
+    }
+};
+
+// This jest zewnętrznym obiektem czyli myMethod1
+myObject1.myMethod1([1,2,3]);
