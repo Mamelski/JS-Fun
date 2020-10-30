@@ -40,8 +40,21 @@ async function increaseSalaryBroken(base, increase){
     return newSalary;
 }
 
+//Nesting async functions
+async function increaseSalaries(baseSalaries, increase){
+    let newSalaries =[];
+    for (let baseSalary of baseSalaries){
+        newSalaries.push(await increaseSalary2(baseSalary, increase));
+    }
+    console.log(`New salaries: ${newSalaries}`);
+    return newSalaries;
+}
+
+
 increaseSalary(1, 7);
 slowAddition(1,7).then(sum => console.log(`slow addition sum ${sum}`));
 increaseSalary2(1,7);
 slowAdditionBroken(1,7).catch(e => console.log(e.message));
 increaseSalaryBroken(1,7);
+increaseSalaries([950, 800, 1000], 100);
+
