@@ -50,6 +50,16 @@ async function increaseSalaries(baseSalaries, increase){
     return newSalaries;
 }
 
+//Parallel async
+async function increaseSalariesParallel(baseSalaries, increase){
+    let salariesPromises = [];
+    for(let baseSalary of baseSalaries){
+        salariesPromises.push(increaseSalary2(baseSalary, increase));
+    }
+    const newSalaries = await Promise.all(salariesPromises);
+    console.log(`New salaries parallel: ${newSalaries}`);
+    return newSalaries;
+}
 
 increaseSalary(1, 7);
 slowAddition(1,7).then(sum => console.log(`slow addition sum ${sum}`));
@@ -57,4 +67,4 @@ increaseSalary2(1,7);
 slowAdditionBroken(1,7).catch(e => console.log(e.message));
 increaseSalaryBroken(1,7);
 increaseSalaries([950, 800, 1000], 100);
-
+increaseSalariesParallel([950, 800, 1000], 100);
