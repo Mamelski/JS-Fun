@@ -3,7 +3,7 @@
 // Base function
 function increaseSalary(base, increase) {
     const newSalary = base + increase;
-    console.log(`New salary: ${newSalary}`);
+    console.log(`base method salary ${newSalary}`);
     return newSalary;
 }
 
@@ -14,7 +14,13 @@ function slowAddition(n1,n2){
     })
 }
 
-increaseSalary(1000, 200); // => 1200
-// logs "New salary: 1200"
+// Async addition
+async function increaseSalary2(base, increase){
+    const newSalary = await slowAddition(base, increase);
+    console.log(`async addition salary ${newSalary}`);
+    return newSalary;
+}
 
-slowAddition(1,7).then(sum => console.log('suma: ' + sum));
+increaseSalary(1, 7);
+slowAddition(1,7).then(sum => console.log(`slow addition sum ${sum}`));
+increaseSalary2(1,7);
